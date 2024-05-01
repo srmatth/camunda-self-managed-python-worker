@@ -1,0 +1,19 @@
+
+services:
+  python-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    environment:
+      - TEST_ENV_VAR=123
+    healthcheck:
+      disable: true
+    networks:
+      - camunda-platform
+
+networks:
+  camunda-platform:
+    external: true
+    name: camunda-platform-main_camunda-platform
